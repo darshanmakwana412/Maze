@@ -14,6 +14,10 @@ class Maze():
             import bfs
             path = bfs.solve(self.start, self.end)
             self.create_txt(path)
+        elif method =="dfs":
+            import dfs
+            path = dfs.solve(self.start, self.end)
+            self.create_txt(path)
         else:
             print("Invalid method provided")
 

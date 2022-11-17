@@ -7,17 +7,17 @@ def solve(start, end):
     end => The ending node of the maze
     '''
 
-    queue = deque([deque([start])])
+    stack = deque([deque([start])])
     visited = []
 
-    while queue:
-        currPath = queue.popleft()
+    while stack:
+        currPath = stack.pop()
         for node in currPath[-1].neighbours:
             if node == end:
                 return currPath
             elif node != None:
-                if id(node) not in visited:
-                    visited.append(id(node))
+                if node not in visited:
+                    visited.append(node)
                     path = currPath.copy()
                     path.append(node)
-                    queue.append(path)
+                    stack.append(path)

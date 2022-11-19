@@ -26,7 +26,7 @@ class Maze():
             maze = self.maze
             for node in list(path)[1:]:
                 pos = node.position
-                maze[pos[0]][pos[1]] = "."
+                maze[pos[0]][pos[1]] = "o"
             
             for line in maze:
                 solution.write(" ".join(line))
@@ -51,7 +51,7 @@ class Maze():
 
                 block = self.maze[i][j]
 
-                if block == "#":
+                if block in ["+", "-", "|"]:
                     # We have a wall
                     top_node_list[j] = None
                     left_node = None
@@ -94,7 +94,7 @@ class Maze():
 
             for line in lines:
                 maze_line = []
-                for block in line:
+                for block in line[::2]:
                     if block != "\n":
                         maze_line.append(block)
                 maze.append(maze_line)
